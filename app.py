@@ -25,7 +25,7 @@ FARE_MAX_DEFAULT = 88.0
 @st.cache_resource
 def load_artifacts():
     scaler = joblib.load(BASE_DIR / "titanic_scaler.joblib")
-    model = joblib.load(BASE_DIR / "titanic_scaler.joblib")
+    model = joblib.load(BASE_DIR / "titanic_model.joblib")
     metrics_path = BASE_DIR / "metrics.json"
     if metrics_path.exists():
         with open(metrics_path, "r", encoding="utf-8") as f:
