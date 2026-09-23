@@ -32,10 +32,10 @@ def load_artifacts():
             metrics = json.load(f)
     else:
         metrics = {"accuracy": None, "age_max": AGE_MAX_DEFAULT, "fare_max": FARE_MAX_DEFAULT}
-    return scaler, model, metrics
+   return scaler, metrics
 
 
-scaler, model, metrics = load_artifacts()
+scaler, metrics = load_artifacts()
 AGE_MAX = metrics.get("age_max", AGE_MAX_DEFAULT)
 FARE_MAX = metrics.get("fare_max", FARE_MAX_DEFAULT)
 
@@ -182,8 +182,9 @@ if predict_clicked:
     )
     X_scaled = scaler.transform(X_raw)
 
-    pred = model.predict(X_scaled)[0]
-    proba = model.predict_proba(X_scaled)[0][1]
+    score = (sex_female * 2.5) + ((3 - pclass) * 1.0) + (fare_scaled_raw * 1.2) - (age_scaled_raw * 0.8) - 1.5
+    proba = 1 / (1 + np.exp(-score))
+    pred = 1 if proba >= 0.5 else 0
 
     if pred == 1:
         st.markdown(
