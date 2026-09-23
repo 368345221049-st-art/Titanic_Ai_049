@@ -52,32 +52,6 @@ st.markdown(
 # หัวข้อระบบ
 # ----------------------------------------------------------------------------
 st.markdown('
-col1, col2 = st.columns(2)
-with col1:
-    pclass_label = st.selectbox(
-        "🛳️ ชั้นโดยสาร",
-        ["ชั้น 1 (Pclass 1)", "ชั้น 2 (Pclass 2)", "ชั้น 3 (Pclass 3)"],
-        index=2,
-    )
-    pclass = int(pclass_label.split("Pclass ")[1].rstrip(")"))
-
-    sex_label = st.radio("👤 เพศ", ["หญิง", "ชาย"], horizontal=True)
-    sex_female = 1 if sex_label == "หญิง" else 0
-
-with col2:
-    age = st.slider("🎂 อายุ (ปี)", min_value=0, max_value=80, value=28)
-    fare = st.slider("💰 ค่าโดยสาร (Fare, ปอนด์)", min_value=0.0, max_value=300.0, value=32.0, step=0.5)
-
-fam_col1, fam_col2 = st.columns(2)
-with fam_col1:
-    sibsp = st.number_input("👫 จำนวนพี่น้อง/คู่สมรสที่ร่วมเดินทาง (SibSp)", min_value=0, max_value=10, value=0)
-with fam_col2:
-    parch = st.number_input("👨‍👩‍👧 จำนวนพ่อแม่/ลูกที่ร่วมเดินทาง (Parch)", min_value=0, max_value=10, value=0)
-
-family_size = sibsp + parch + 1
-st.caption(f"👨‍👩‍👧‍👦 ขนาดครอบครัวทั้งหมด (FamilySize) = {family_size} คน")
-
-st.markdown("
 X_raw = pd.DataFrame(
     [[pclass_enc, sex_female, age_scaled_raw, fare_scaled_raw, family_size]],
     columns=FEATURE_NAMES,
@@ -91,7 +65,7 @@ pred = 1 if proba >= 0.5 else 0
 if pred == 1:
     st.markdown(
         f"""
-""",
+        """,
     unsafe_allow_html=True,
 )
 """,
