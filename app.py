@@ -51,8 +51,7 @@ st.markdown(
 # ----------------------------------------------------------------------------
 # หัวข้อระบบ
 # ----------------------------------------------------------------------------
-st.markdown('
-X_raw = pd.DataFrame(
+st.markdown('X_raw = pd.DataFrame(
     [[pclass_enc, sex_female, age_scaled_raw, fare_scaled_raw, family_size]],
     columns=FEATURE_NAMES,
 )
@@ -64,14 +63,11 @@ pred = 1 if proba >= 0.5 else 0
 
 if pred == 1:
     st.markdown(
-        f"""
-        """,
+        f"""""",
     unsafe_allow_html=True,
-)
-""",
+)""",
         unsafe_allow_html=True,
     )
 
-st.progress(min(max(float(proba), 0.0), 1.0))
-""",
+st.progress(min(max(float(proba), 0.0), 1.0))""",
 unsafe_allow_html=True,
